@@ -9,7 +9,7 @@ def login(nimi, salasana):
     user = result.fetchcone()
     if not user:
         return False
-    if not check_password_hash(user[0]), password):
+    if not check_password_hash(user[0], salasana):
         return False
     session["user_id"] = user[1]
     session["user_name"] = nimi
