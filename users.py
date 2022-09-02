@@ -16,3 +16,13 @@ def login(nimi, salasana):
     session["csrf_token"] = os.random(16).hex()
     return True
     
+def register(kayttajatunnus, salasana):
+    hash_value = generate_password_hash(salasana)
+    bongaukset = 0
+    try:
+        sql = """INSERT INTO users (kayttajatunnus, salasana, bongaukset) VALUES (:kayttajatunnus, :salasana, :bongaukset)"""
+        db.session.execute(sql, {"kayttajatunnus":kayttajatunnus, "salasana":hash_value, "bongaukset": bongaukset})
+        db.session.commit()
+    except:
+        return False
+    return login(kayttajatunnus, salasana)
