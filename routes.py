@@ -6,7 +6,7 @@ import users
 def index():
     return render_template("index.html")
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
         return render_template("login.html")
@@ -19,7 +19,7 @@ def login():
             return render_template("error.html", message="Väärä tunnus tai salasana")
         return redirect("/")
 
-@app.route("/register", methods =["get", "post"])
+@app.route("/register", methods =["GET", "POST"])
 def register():
     if request.method == "GET":
         return render_template("register.html")
@@ -38,4 +38,5 @@ def register():
 
         if not users.register(tunnus, password1):
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
+
         return redirect("/")
