@@ -3,7 +3,10 @@
 
 <h2>Tervetuloa lintubongaussovellukseen!</h2>
 <p>
-    <a href="/login">Kirjaudu sisään</a> ja aloita bongaus!
-</p>
+{% if session.user_id %}
+Olet kirjautunut sisään nimellä <b>{{ session.user_name }}.</b>
+{% else %}
+Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a> ja aloita bongaus!
+{% endif %}
 
 {% endblock %}
