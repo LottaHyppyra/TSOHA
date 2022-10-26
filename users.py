@@ -17,6 +17,10 @@ def login(kayttajatunnus, salasana):
             return True
     return False
 
+def logout():
+    del session["user_id"]
+    del session["user_name"]
+
 def register(kayttajatunnus, salasana):
     hash_value = generate_password_hash(salasana)
     bongaukset = 0
@@ -27,3 +31,6 @@ def register(kayttajatunnus, salasana):
     except:
         return False
     return login(kayttajatunnus, salasana)
+
+def user_id():
+    return session.get("user_id", 0)

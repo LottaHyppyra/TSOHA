@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{%block content%}
+
+<h2>Bongaukset</h2>
+
+{% for bongaus in list %} 
+
+{{ bongaus.laji }}, {{ bongaus.paikka }}
+<br>
+
+{% endfor %} 
+
+
+
+{% endblock %}
