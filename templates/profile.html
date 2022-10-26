@@ -8,7 +8,7 @@ Käyttäjänimi: {{ session.user_name }}
 <br> Bongaukset: <br>
 {% for bongaus in list %} 
 
-{{ bongaus.laji }}, {{ bongaus.paikka }}
+{{ bongaus.laji }}, {{ bongaus.paikka }}, {{ bongaus.spotted }}
 <br>
 
 {% endfor %} 

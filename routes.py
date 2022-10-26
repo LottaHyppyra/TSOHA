@@ -67,9 +67,12 @@ def add():
         laji = request.form["laji"]
         if len(laji) < 1 or len(laji) > 20:
             return render_template("error.html", message="Linnun lajin tulee olla 1-20 merkkiä pitkä.")
+            
         paikka = request.form["paikka"]
         if len(paikka) < 1 or len(paikka) > 20:
             return render_template("error.html", message="Paikan nimen tulee olla 1-20 merkkiä pitkä.")
 
-        bongaukset.add(laji, paikka, users.user_id())
+        spotted = request.form["spotted"]
+
+        bongaukset.add(laji, paikka, spotted, users.user_id())
         return redirect("/profile")

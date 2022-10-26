@@ -9,5 +9,6 @@ CREATE TABLE bongaukset (
     id SERIAL PRIMARY KEY,
     laji TEXT,
     paikka TEXT,
+    spotted DATE,
     kayttaja_id INTEGER REFERENCES users
 )
