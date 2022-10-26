@@ -9,5 +9,5 @@ CREATE TABLE bongaukset (
     id SERIAL PRIMARY KEY,
     laji TEXT,
     paikka TEXT,
-    bongaaja_id INTEGER REFERENCES users
+    kayttaja_id INTEGER REFERENCES users
 )
