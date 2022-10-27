@@ -11,11 +11,16 @@ CREATE TABLE bongaukset (
     paikka TEXT,
     spotted DATE,
     kayttaja_id INTEGER REFERENCES users
-)
+);
 
 CREATE TABLE birds (
     id SERIAL PRIMARY KEY,
     latin_name TEXT,
     name TEXT, 
     family TEXT
-)
+);
+
+CREATE TABLE family (
+    id SERIAL PRIMARY KEY,
+    name TEXT
+);

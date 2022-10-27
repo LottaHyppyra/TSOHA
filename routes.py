@@ -22,7 +22,7 @@ def all():
 @app.route("/birds")
 def list_birds():
     if request.method == "GET":
-        return render_template("birds.html", list=birds.get_all())
+        return render_template("birds.html", all_birds=birds.get_all(), len_birds=len(birds.get_all()), len_families=len(birds.get_families()))
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
