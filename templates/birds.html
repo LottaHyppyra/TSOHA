@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{%block content%}
+
+<h2>Linnut</h2>
+<p>
+
+{% for bird in list %}
+
+<b>Nimi:</b> {{ bird.name }} <b>Latinankielinen nimi:</b> {{ bird.latin_name }} <b>Heimo:</b> {{ bird.family }}
+<br>
+
+{% endfor %}
+
+{% endblock %}

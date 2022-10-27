@@ -6,6 +6,10 @@ def is_empty():
     sql = """SELECT * FROM birds"""
     return len(db.session.execute(sql).fetchall()) == 0
 
+def get_all():
+    sql = """SELECT * FROM birds"""
+    return db.session.execute(sql).fetchall()
+
 def add_birds_to_db():
     family = None
     with open("birds.txt") as file:

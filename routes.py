@@ -2,6 +2,7 @@ from app import app
 from flask import render_template, request, redirect
 import users
 import observations
+import birds
 
 @app.route("/")
 def index():
@@ -17,6 +18,11 @@ def profile():
 def all():
     if request.method == "GET":
         return render_template("all.html", list=observations.get_all())
+
+@app.route("/birds")
+def list_birds():
+    if request.method == "GET":
+        return render_template("birds.html", list=birds.get_all())
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
