@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, request, redirect
 import users
-import bongaukset
+import observations
 
 @app.route("/")
 def index():
@@ -10,13 +10,13 @@ def index():
 @app.route("/profile")
 def profile():
     if request.method == "GET":
-        omat_bongaukset = bongaukset.get_my(users.user_id())
+        omat_bongaukset = observations.get_my(users.user_id())
         return render_template("profile.html", list=omat_bongaukset)
 
 @app.route("/all")
 def all():
     if request.method == "GET":
-        return render_template("all.html", list=bongaukset.get_all())
+        return render_template("all.html", list=observations.get_all())
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -67,12 +67,12 @@ def add():
         laji = request.form["laji"]
         if len(laji) < 1 or len(laji) > 20:
             return render_template("error.html", message="Linnun lajin tulee olla 1-20 merkkiä pitkä.")
-            
+
         paikka = request.form["paikka"]
         if len(paikka) < 1 or len(paikka) > 20:
             return render_template("error.html", message="Paikan nimen tulee olla 1-20 merkkiä pitkä.")
 
         spotted = request.form["spotted"]
 
-        bongaukset.add(laji, paikka, spotted, users.user_id())
+        observations.add(laji, paikka, spotted, users.user_id())
         return redirect("/profile")
